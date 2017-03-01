@@ -4,19 +4,17 @@ from django.utils.timezone import now
 # Create your models here.
 
 class Book(models.Model):
-
     title = models.CharField(max_length=150)
-    author = models.ManyToManyField("Author", related_name="Books")
+    authors = models.ManyToManyField("Author", related_name="books")
     review = models.TextField(blank=True, null=True)
     date_reviewed = models.DateTimeField(blank=True, null=True)
     is_favorite = models.BooleanField(default=False, verbose_name="Favorite?")
 
-    #Title/Author return method
-    def __str__(self):
+    def __str__(self):#Title/Author return method
         return self.title
 
     def list_authors(self):
-        return ", ".join([author.name for author in self.authors.all])
+        return ", ".join([author.name for author in self.authors.all()])
 
     def save(self, *args, **kwargs):
         if (self.review and self.date_reviewed is None):
