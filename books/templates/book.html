@@ -1,15 +1,8 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>A Book</title>
-  </head>
-  <body>
-    {% if book.review}
-      <div class='book'>
-        <h3>{{book.title}}</h3>
-        <p>By {% for author in book.authors.all%}{{author.name}}{%endfor%}</p>
-        {% if book.is_favorite%}<p class="highligh">favorite</p>{%endif%}
-        <p>{{book.review|linebreaks}}</p>
-  </body>
-</html>
+{%extends "base.html"%}
+
+{%block content%}
+    {% if book.review%}
+      {%include "book-detail.html"%}
+    {%endif%}
+{%endblock%}
