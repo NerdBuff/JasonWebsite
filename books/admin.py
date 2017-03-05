@@ -21,6 +21,7 @@ class BookAdmin(admin.ModelAdmin):
     list_filter=("is_favorite",)
     search_fields=("title", "authors__name",)
 
+    readonly_fields = ("date_reviewed",)
 
 # Register your models here.
 

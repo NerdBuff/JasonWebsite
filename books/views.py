@@ -3,7 +3,6 @@ from django.shortcuts import render
 from django.views.generic import DetailView, View
 from .models import Book, Author
 
-from django.http import HttpResponse
 
 # Create your views here.
 def list_books(request):

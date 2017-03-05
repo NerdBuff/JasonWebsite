@@ -122,6 +122,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATIC_ROOT = 'static'
+
 STATICFILE_DIRS = (
     os.path.join(BASE_DIR, 'JasonWebsite', 'static'),
 )

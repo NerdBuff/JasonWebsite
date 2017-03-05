@@ -11,7 +11,7 @@ class Book(models.Model):
     is_favorite = models.BooleanField(default=False, verbose_name="Favorite?")
 
     def __str__(self):#Title/Author return method
-        return self.title
+        return "{} by {}.".format(self.title,self.list_authors)
 
     def list_authors(self):
         return ", ".join([author.name for author in self.authors.all()])
@@ -20,7 +20,7 @@ class Book(models.Model):
         if (self.review and self.date_reviewed is None):
             self.date_reviewed=now()
 
-        super(Book,self).save(*args, **kwargs)
+        super(Book,self).save(*args, **kwargs) #This super function makes sure the save gets caled, to save
 
 class Author(models.Model):
     name = models.CharField(max_length=70 , help_text="Use pen name, not real name.")
